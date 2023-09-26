@@ -1,8 +1,9 @@
 # Bootcamp Cielo - Desafio
 
 ## Tecnologias Utilizadas
-- TypeScript
 - JavaScript
+- TypeScript
+- React
 - ChakraUI
 - Axios
 - React Router Dom
@@ -14,7 +15,7 @@ Para inicializar o projeto é necessário que o seu computador esteja com NodeJS
 ```
 npm install || yarn 
 ```
-2 Crie um arquivo .env
+2 - Crie um arquivo .env
 ```
 VITE_API_BASE_URL=http://localhost:3333
 VITE_API_TIMEOUT=20000
@@ -23,7 +24,12 @@ VITE_API_TIMEOUT=20000
 ```
 npm run dev || yarn dev
 ```
-4 - Acesse o projeto
+4 - Em um segundo terminal execute o comando
+```
+npm run server || yarn server
+```
+Obs. É responsável por inicializar o servidor utilizando como base o data.json e iniciliazar o servidor 
+5 - Acesse o projeto
 ```
 http://localhost:3000
 ```
