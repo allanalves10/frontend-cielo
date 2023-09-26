@@ -28,7 +28,8 @@ npm run dev || yarn dev
 ```
 npm run server || yarn server
 ```
-Obs. É responsável por inicializar o servidor utilizando como base o data.json e iniciliazar o servidor 
+Obs. É responsável por inicializar o servidor utilizando como base o data.json e iniciliazar o servidor
+
 5 - Acesse o projeto
 ```
 http://localhost:3000
