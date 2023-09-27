@@ -32,6 +32,7 @@ export function Home() {
 
     return(
         <>
+            <h1>Home</h1>
             {summary && (
                 <div>
                     <p>{summary.initialDate}</p>
@@ -66,7 +67,6 @@ export function Home() {
                     <p>{item.withdrawAmount}</p>
                 </div>
             ))}
-            <h1>Home</h1>
         </>
     )
 }
