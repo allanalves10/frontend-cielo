@@ -61,7 +61,7 @@ export function Home() {
     }, [items])
 
     return(
-      <Flex direction="column" padding={{ base: 0, md: "3rem" }}>
+      <Flex direction="column" padding={{ base: 0, md: "3rem" }} mb='20'>
         <Heading as='h2' color='white' fontWeight={'bold'} size={{ base: 'lg', md: '2xl' }} textAlign='center' pb={{ base: 5, md: 20 }}>
           Dashboard de Transações
         </Heading>
