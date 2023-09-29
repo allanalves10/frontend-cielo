@@ -1,5 +1,17 @@
+import { Flex, Heading } from "@chakra-ui/react";
+import { useTransaction } from "../../hooks/useTransaction";
+
 export function List() {
+    const { items } = useTransaction()
+
     return(
-        <h1>List</h1>
+        <Flex direction="column" padding={{ base: 0, md: "3rem" }}>
+            <Heading as='h2' color='white' fontWeight={'bold'} size={{ base: 'lg', md: '2xl' }} textAlign='center' pb={{ base: 5, md: 20 }}>
+            Listagem de Transações
+            </Heading>
+            {!!items.length && (
+                <h1>Listagem</h1>
+            )}
+      </Flex>
     )
 }
