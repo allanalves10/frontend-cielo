@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AiFillEye } from "react-icons/ai";
 import { ItemData } from "../types/ItemTypes";
 import formatMoney from "../utils/formatMoney";
+import { generalStrings } from "../utils/generalStrings";
 
 interface TransactioProps {
     transactions: ItemData[]
@@ -11,6 +12,7 @@ interface TransactioProps {
 export const TransactionTable = ({ transactions }: TransactioProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [selectedTransaction, setSelectedTransaction] = useState<ItemData>();
+    const { button, table, detailsTransaction } = generalStrings
   
     const handleViewClick = (item: ItemData) => {
         setSelectedTransaction(item);
@@ -22,14 +24,14 @@ export const TransactionTable = ({ transactions }: TransactioProps) => {
             <Table variant="simple">
                 <Thead>
                 <Tr>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>ID</Th>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>Tipo de Pagamento</Th>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>Cartão</Th>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>Valor Bruto</Th>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>Valor Líquido</Th>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>Canal</Th>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>Status</Th>
-                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>Visualizar</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.id || ''}</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.paymentType || ''}</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.cardBrand || ''}</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.grossAmount}</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.netAmount}</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.channel}</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.status}</Th>
+                    <Th fontSize='lg' fontWeight={'bold'} color='brand.500'>{table.view}</Th>
                 </Tr>
                 </Thead>
                 <Tbody>
@@ -66,24 +68,24 @@ export const TransactionTable = ({ transactions }: TransactioProps) => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                <ModalHeader color='brand.500'>Detalhes da Transação</ModalHeader>
+                <ModalHeader color='brand.500'>{detailsTransaction}</ModalHeader>
                 <ModalCloseButton color='brand.500' />
                 <ModalBody>
                     {selectedTransaction && (
                     <Box display='flex' flexDirection='column'>
-                        <Tag color='black'><b>ID:</b>{' '}{selectedTransaction.id}</Tag>
-                        <Tag color='black'><b>Tipo de Pagamento:</b>{' '}{selectedTransaction.paymentType}</Tag>
-                        <Tag color='black'><b>Cartão:</b>{' '}{selectedTransaction.cardBrand}</Tag>
-                        <Tag color='black'><b>Valor Bruto:</b>{' '}{formatMoney(selectedTransaction.grossAmount)}</Tag>
-                        <Tag color='black'><b>Valor Líquido:</b>{' '}{formatMoney(selectedTransaction.netAmount)}</Tag>
-                        <Tag color='black'><b>Canal:</b>{' '}{selectedTransaction.channel}</Tag>
-                        <Tag color='black'><b>Status:</b>{' '}{selectedTransaction.status}</Tag>
+                        <Tag color='black'><b>{table.id || ''}:</b>{' '}{selectedTransaction.id}</Tag>
+                        <Tag color='black'><b>{table.paymentType || ''}:</b>{' '}{selectedTransaction.paymentType}</Tag>
+                        <Tag color='black'><b>{table.cardBrand || ''}:</b>{' '}{selectedTransaction.cardBrand}</Tag>
+                        <Tag color='black'><b>{table.grossAmount || ''}:</b>{' '}{formatMoney(selectedTransaction.grossAmount)}</Tag>
+                        <Tag color='black'><b>{table.netAmount || ''}:</b>{' '}{formatMoney(selectedTransaction.netAmount)}</Tag>
+                        <Tag color='black'><b>{table.channel || ''}:</b>{' '}{selectedTransaction.channel}</Tag>
+                        <Tag color='black'><b>{table.status || ''}:</b>{' '}{selectedTransaction.status}</Tag>
                     </Box>
                     )}
                 </ModalBody>
                 <ModalFooter>
                     <Button bg="brand.500" color='white' onClick={onClose}>
-                    Fechar
+                        {button.close || ''}
                     </Button>
                 </ModalFooter>
                 </ModalContent>
