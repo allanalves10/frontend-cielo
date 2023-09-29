@@ -71,13 +71,13 @@ export const TransactionTable = ({ transactions }: TransactioProps) => {
                 <ModalBody>
                     {selectedTransaction && (
                     <Box display='flex' flexDirection='column'>
-                        <Tag color='black'><b>ID:</b> {selectedTransaction.id}</Tag>
-                        <Tag color='black'><b>Tipo de Pagamento:</b> {selectedTransaction.paymentType}</Tag>
-                        <Tag color='black'><b>Cartão:</b> {selectedTransaction.cardBrand}</Tag>
-                        <Tag color='black'><b>Valor Bruto:</b> {formatMoney(selectedTransaction.grossAmount)}</Tag>
-                        <Tag color='black'><b>Valor Líquido:</b> {formatMoney(selectedTransaction.netAmount)}</Tag>
-                        <Tag color='black'><b>Canal:</b> {selectedTransaction.channel}</Tag>
-                        <Tag color='black'><b>Status:</b> {selectedTransaction.status}</Tag>
+                        <Tag color='black'><b>ID:</b>{' '}{selectedTransaction.id}</Tag>
+                        <Tag color='black'><b>Tipo de Pagamento:</b>{' '}{selectedTransaction.paymentType}</Tag>
+                        <Tag color='black'><b>Cartão:</b>{' '}{selectedTransaction.cardBrand}</Tag>
+                        <Tag color='black'><b>Valor Bruto:</b>{' '}{formatMoney(selectedTransaction.grossAmount)}</Tag>
+                        <Tag color='black'><b>Valor Líquido:</b>{' '}{formatMoney(selectedTransaction.netAmount)}</Tag>
+                        <Tag color='black'><b>Canal:</b>{' '}{selectedTransaction.channel}</Tag>
+                        <Tag color='black'><b>Status:</b>{' '}{selectedTransaction.status}</Tag>
                     </Box>
                     )}
                 </ModalBody>
