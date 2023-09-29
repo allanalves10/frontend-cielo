@@ -19,12 +19,12 @@ export default function StatsCard(props: StatsCardProps) {
       color="black"
       borderColor={useColorModeValue('gray.800', 'gray.500')}
       rounded={'lg'}>
-      <Flex justifyContent={'space-between'}>
-        <Box pl={{ base: 2, md: 6 }}>
-          <StatLabel fontWeight={'medium'} isTruncated>
+      <Flex justifyContent={'space-between'} gap={'1'}>
+        <Box pl={{ base: 2, md: 4 }}>
+          <StatLabel fontSize={20} fontWeight={'bold'} isTruncated>
             {title}
           </StatLabel>
-          <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+          <StatNumber color='brand.500' fontSize={'2xl'} fontWeight={'bold'}>
             {stat}
           </StatNumber>
         </Box>

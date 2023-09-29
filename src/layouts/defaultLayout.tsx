@@ -19,6 +19,7 @@ import {
 } from 'react-icons/fi'
 import { IconType } from 'react-icons'
 import { Outlet } from 'react-router-dom'
+import logo from './../assets/logo.svg'
 
 interface LinkItemProps {
   name: string
@@ -33,7 +34,7 @@ const LinkItems: Array<LinkItemProps> = [
 export default function SimpleSidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.900', 'gray.900')}>
+    <Box minH="100vh" bg={useColorModeValue('gray.600', 'gray.900')}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
       <Drawer
         isOpen={isOpen}
@@ -61,7 +62,10 @@ interface SidebarProps extends BoxProps {
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
-      bg={useColorModeValue('gray.600', 'gray.900')}
+      bg={useColorModeValue('white', 'gray.900')}
+      color='gray.900'
+      fontWeight='bold'
+      fontSize={20}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w={{ base: 'full', md: 60 }}
@@ -70,7 +74,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          <img src={logo} alt="Logo da Cielo menu lateral" />
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -146,7 +150,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        <img src={logo} alt="Logo da Cielo menu lateral" />
       </Text>
     </Flex>
   )
