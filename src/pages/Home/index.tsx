@@ -3,6 +3,15 @@ import Api from "../../services/Api"
 import { ItemData } from "../../types/ItemTypes"
 import { SummaryData } from "../../types/SummaryTypes"
 import { PromiseStatus } from "../../utils/enums/statusPromiseEnum"
+import {
+  Box,
+  SimpleGrid,
+} from '@chakra-ui/react'
+import { AiOutlineDollarCircle } from 'react-icons/ai'
+import { GrTransaction } from 'react-icons/gr'
+import formatMoney from "../../utils/formatMoney"
+import formatNumber from "../../utils/formatNumber"
+import StatsCard from "../../components/StatsCard"
 
 export function Home() {
     const [items, setItems] = useState<ItemData[]>([])
@@ -15,6 +24,7 @@ export function Home() {
                     Api.get('/items'),
                     Api.get('/summary'),
                 ])
+
                 if (resultPromiseItems.status === PromiseStatus.FULFILLED) {
                     const responseDataItem = resultPromiseItems.value.data;
                     setItems(responseDataItem);
@@ -34,14 +44,16 @@ export function Home() {
         <>
             <h1>Home</h1>
             {summary && (
-                <div>
-                    <p>{summary.initialDate}</p>
-                    <p>{summary.finalDate}</p>
-                    <p>{summary.totalAmount}</p>
-                    <p>{summary.totalAverageAmount}</p>
-                    <p>{summary.totalNetAmount}</p>
-                    <p>{summary.totalQuantity}</p>
-                </div>
+                <>
+                  <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
+                    <SimpleGrid columns={{ base: 1, md: 4 }} spacing={{ base: 5, lg: 8 }}>
+                      <StatsCard title={'Quantidade Total'} stat={formatNumber(summary.totalAmount)} icon={<GrTransaction size={'3em'} />} />
+                      <StatsCard title={'Montante Total'} stat={formatMoney(summary.totalAmount)} icon={<AiOutlineDollarCircle size={'3em'} />} />
+                      <StatsCard title={'Valor Líquido'} stat={formatMoney(summary.totalNetAmount)} icon={<AiOutlineDollarCircle size={'3em'} />} />
+                      <StatsCard title={'Valor Médio'} stat={formatMoney(summary.totalAverageAmount)} icon={<AiOutlineDollarCircle size={'3em'} />} />
+                    </SimpleGrid>
+                  </Box>
+                </>
             )}
             {!!items.length && items.map(item => (
                 <div key={item.id}>
