@@ -6,7 +6,6 @@ describe('StatsCard', () => {
       const title = 'Test Title';
       const stat = 123;
 
-      // Act
       render(<StatsCard title={title} stat={stat} />);
 
       expect(screen.getByText(title)).toBeInTheDocument();
