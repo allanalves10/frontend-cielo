@@ -30,3 +30,8 @@ npm run start || yarn start
 http://localhost:3000
 ```
 
+5 - Executar os cases de teste
+```
+npm run test || yarn test
+```
+
