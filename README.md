@@ -22,8 +22,11 @@ copie os arquivos que estão contido dentro do arquivo '.env-example' que já es
 
 3 - Execute o projeto com o comando
 ```
-npm run start || yarn start
+npm run dev || yarn dev
+npm run server || yarn server 
 ```
+Obs.: Em terminais separados
+
 
 4 - Acesse o projeto
 ```
